@@ -1,13 +1,8 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
-
-
 router.get('/', (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
+  console.log('get / categories')
   Category.findAll({
     include: [
       {
@@ -19,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-
+  console.log('get /:id categories')
   Category.findOne({
     where: {
       id: req.params.id
@@ -31,14 +26,10 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-
-  // find one category by its `id` value
-  // be sure to include its associated Products
 });
 
 router.post('/', (req, res) => {
-  // create a new category
-
+  console.log('post / categories')
   Category.create({
     category_name: req.body.category_name
   })
@@ -52,6 +43,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+  console.log('put /:id categories')
   Category.update(req.body, {
     where: {
       id: req.params.id
@@ -62,12 +54,10 @@ router.put('/:id', (req, res) => {
     console.log(err);
     res.status(500).json(err);
   })
-
-  // update a category by its `id` value
 });
 
 router.delete('/:id', (req, res) => {
-
+console.log('delete /:id categories')
   Category.destroy({
     where: {
       id: req.params.id
@@ -78,7 +68,6 @@ router.delete('/:id', (req, res) => {
     console.log(err);
     res.status(500).json(err);
   })
-// delete a category by its `id` value
 });
 
 module.exports = router;
