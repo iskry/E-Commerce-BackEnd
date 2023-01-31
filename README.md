@@ -17,6 +17,7 @@ What you need to run the app:
 - Node.js and npm installed on your local machine
 - NPM 
 - MySQL or any other SQL database management system (if not using JAWSDB)
+- .env file in root folder for DB credentials. (.env.EXAMPLE provided)
 
 ### Installing
 
