@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
 router.get('/', (req, res) => {
-  console.log('get / categories')
   Category.findAll({
     include: [
       {
@@ -19,7 +18,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  console.log('get /:id categories')
   Category.findOne({
     where: {
       id: req.params.id
@@ -50,7 +48,6 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  console.log('put /:id categories')
   Category.update(req.body, {
     where: {
       id: req.params.id
@@ -64,13 +61,22 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-console.log('delete /:id categories')
-  Category.destroy({
+  Category.findOne({
     where: {
       id: req.params.id
     }
   })
-  .then((category) => res.json(category))
+  .then(category => {
+    return Category.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+  })
+  .then(() => {
+    console.log(res)
+    res.json({message: `Category ${category_name} has been deleted`});
+  })
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);

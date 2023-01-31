@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
-  console.log('get / tags')
   Tag.findAll({
     include: [
       {
@@ -19,7 +18,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  console.log('get /:id tags')
   Tag.findOne({
     where: {
       id: req.params.id
@@ -39,7 +37,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('post / tags')
   Tag.create(req.body)
   .then((tag) => res.json(tag))
   .catch((err) => {
@@ -49,7 +46,6 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  console.log('put /:id tags')
   Tag.update(req.body, {
     where: {
       id: req.params.id
@@ -63,7 +59,6 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  console.log('delete /:id tags')
   Tag.destroy({
     where: {
       id: req.params.id
