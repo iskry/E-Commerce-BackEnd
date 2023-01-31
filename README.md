@@ -1,6 +1,6 @@
 # E-Commerce-BackEnd
 
-This API is the backend for an e-commerce website, built with Express and Sequelize. It is responsible for handling all the data related to products, categories, and tags.
+This is the backend for an e-commerce website, built with Express and Sequelize. It is responsible for handling all the data related to products, categories, and tags.
 
 [Watch the video!](https://www.youtube.com/watch?v=FExG0wkIIJI)
 
