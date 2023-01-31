@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   Tag.create(req.body)
-  .then((tag) => res.json(tag))
+  .then((tag) => res.json(`Tag ${tag.tag_name} was created successfully with id: ${tag.id}`))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((tag) => res.json(tag))
+  .then((tag) => res.json(`Tag updated successfully`))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
@@ -64,7 +64,7 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((tag) => res.json(tag))
+  .then((tag) => res.json(`Tag ${req.params.id} deleted successfully`))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
