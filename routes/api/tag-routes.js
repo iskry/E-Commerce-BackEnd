@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((tag) => res.json(`Tag updated successfully`))
+  .then((tag) => res.json(`Tag ${req.params.id} updated successfully`))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
