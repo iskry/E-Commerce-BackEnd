@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
   Category.create({
     category_name: req.body.category_name
   })
-  .then((category) => res.json(category))
+  .then((category) => res.json(`Category ${category.category_name} was created successfully with id: ${category.id}`))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((category) => res.json(category))
+  .then((category) => res.json(`Category ${req.params.id} updated successfully`))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
@@ -74,8 +74,7 @@ router.delete('/:id', (req, res) => {
     })
   })
   .then(() => {
-    console.log(res)
-    res.json({message: `Category ${category_name} has been deleted`});
+    res.json(`Category ${req.params.id} has been deleted`);
   })
   .catch((err) => {
     console.log(err);
